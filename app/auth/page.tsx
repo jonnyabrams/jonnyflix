@@ -68,7 +68,7 @@ const Auth = () => {
               {authType === 'login' ? 'Sign In' : 'Sign Up'}
             </button>
             <div className="text-neutral-500 mt-12">
-              {authType === 'login' ? "New to JonnyFlix?" : "Already a member?"}{" "}
+              {authType === 'login' ? "New to Jonnyflix?" : "Already a member?"}{" "}
               <span
                 onClick={toggleAuthType}
                 className="text-white ml-1 cursor-pointer hover:underline"
