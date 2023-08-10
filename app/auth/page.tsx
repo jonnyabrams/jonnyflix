@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useCallback, useState } from "react";
+import axios from "axios";
 
 import Input from "../components/Input";
 
@@ -16,6 +17,18 @@ const Auth = () => {
       currentAuthType === "login" ? "signup" : "login"
     );
   }, []);
+
+  const register = useCallback(() => {
+    try {
+      axios.post("/api/register", {
+        email,
+        name,
+        password,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [email, name, password]);
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -64,16 +77,16 @@ const Auth = () => {
                 value={password}
               />
             </div>
-            <button className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
-              {authType === 'login' ? 'Sign In' : 'Sign Up'}
+            <button onClick={register} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
+              {authType === "login" ? "Sign In" : "Sign Up"}
             </button>
             <div className="text-neutral-500 mt-12">
-              {authType === 'login' ? "New to Jonnyflix?" : "Already a member?"}{" "}
+              {authType === "login" ? "New to Jonnyflix?" : "Already a member?"}{" "}
               <span
                 onClick={toggleAuthType}
                 className="text-white ml-1 cursor-pointer hover:underline"
               >
-                {authType === 'login' ? "Sign up now" : "Log in"}
+                {authType === "login" ? "Sign up now" : "Log in"}
               </span>
               .
             </div>
