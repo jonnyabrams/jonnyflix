@@ -25,20 +25,32 @@ const Auth = () => {
     setPassword("");
   };
 
-  const register = useCallback(() => {
+  const onRegisterSuccess = () => {
+    toast("Success! Now please log in");
+    clearInputs();
+    setAuthType("login");
+  };
+
+  const handleRegister = async (e: any) => {
+    e.preventDefault();
+
     try {
-      axios.post("/api/auth/register", {
-        email,
-        name,
-        password,
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
       });
-      toast("Success! Now please log in");
-      clearInputs();
-      setAuthType("login");
+      res.status === 201 && onRegisterSuccess();
     } catch (error) {
       console.log(error);
     }
-  }, [email, name, password]);
+  };
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -88,7 +100,7 @@ const Auth = () => {
               />
             </div>
             <button
-              onClick={register}
+              onClick={handleRegister}
               className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
             >
               {authType === "login" ? "Sign In" : "Sign Up"}
