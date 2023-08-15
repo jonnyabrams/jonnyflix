@@ -19,6 +19,12 @@ const Auth = () => {
     );
   }, []);
 
+  const clearInputs = () => {
+    setName("");
+    setEmail("");
+    setPassword("");
+  };
+
   const register = useCallback(() => {
     try {
       axios.post("/api/auth/register", {
@@ -26,7 +32,9 @@ const Auth = () => {
         name,
         password,
       });
-      toast("User successfully registered")
+      toast("Success! Now please log in");
+      clearInputs();
+      setAuthType("login");
     } catch (error) {
       console.log(error);
     }
