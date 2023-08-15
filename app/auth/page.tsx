@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import axios from "axios";
 
 import Input from "../components/Input";
+import { toast } from "react-hot-toast";
 
 const Auth = () => {
   const [name, setName] = useState("");
@@ -25,6 +26,7 @@ const Auth = () => {
         name,
         password,
       });
+      toast("User successfully registered")
     } catch (error) {
       console.log(error);
     }
