@@ -10,6 +10,7 @@ const Auth = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const [authType, setAuthType] = useState("login");
 
@@ -28,6 +29,7 @@ const Auth = () => {
   const onRegisterSuccess = () => {
     toast("Success! Now please log in");
     clearInputs();
+    setIsError(false);
     setAuthType("login");
   };
 
@@ -46,7 +48,7 @@ const Auth = () => {
           password,
         }),
       });
-      res.status === 201 && onRegisterSuccess();
+      res.status === 201 ? onRegisterSuccess() : setIsError(true);
     } catch (error) {
       console.log(error);
     }
@@ -115,6 +117,13 @@ const Auth = () => {
               </span>
               .
             </div>
+            {isError && (
+              <div className="pt-10">
+                <span className="text-white text-[12px] font-light">
+                  * Something went wrong
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </div>
