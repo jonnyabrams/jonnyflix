@@ -20,7 +20,7 @@ const Auth = () => {
 
   const register = useCallback(() => {
     try {
-      axios.post("/api/register", {
+      axios.post("/api/auth/register", {
         email,
         name,
         password,
@@ -77,7 +77,10 @@ const Auth = () => {
                 value={password}
               />
             </div>
-            <button onClick={register} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
+            <button
+              onClick={register}
+              className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
+            >
               {authType === "login" ? "Sign In" : "Sign Up"}
             </button>
             <div className="text-neutral-500 mt-12">
