@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 import Input from "../../components/Input";
 
@@ -14,8 +15,15 @@ const Auth = () => {
   const [authType, setAuthType] = useState("login");
 
   const session = useSession();
+  const router = useRouter();
 
   console.log(session)
+
+  useEffect(() => {
+    if (session.status === "authenticated") {
+      router?.push("/");
+    }
+  }, [session.status, router]);
 
   const toggleAuthType = useCallback(() => {
     setAuthType((currentAuthType) =>
@@ -65,6 +73,10 @@ const Auth = () => {
       password,
     });
   };
+
+  if (session.status === "loading") {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
