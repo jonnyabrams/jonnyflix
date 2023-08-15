@@ -1,7 +1,14 @@
-import Image from 'next/image'
+"use client";
 
-export default function Home() {
-  return (
-    <h1 className='text-red-700'>Hello world</h1>
-  )
-}
+import { signOut } from "next-auth/react";
+
+const Home = () => {
+  const handleLogout = (event: any) => {
+    event.preventDefault();
+    signOut();
+  };
+
+  return <button onClick={handleLogout}>Log out</button>;
+};
+
+export default Home;
