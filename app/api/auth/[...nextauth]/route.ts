@@ -4,7 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 
 import dbConnect from "@/utils/mongodb";
-import User from "@/app/models/User";
+import User from "@/models/User";
 
 const handler = NextAuth({
   providers: [
@@ -42,7 +42,7 @@ const handler = NextAuth({
     }),
   ],
   pages: {
-    error: "/dashboard/login",
+    error: "/auth",
   },
 });
 

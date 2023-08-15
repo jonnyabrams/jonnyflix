@@ -1,18 +1,21 @@
 "use client";
 import Image from "next/image";
 import { useCallback, useState } from "react";
-import axios from "axios";
-
-import Input from "../components/Input";
 import { toast } from "react-hot-toast";
+import { signIn, useSession } from "next-auth/react";
+
+import Input from "../../components/Input";
 
 const Auth = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState(false);
-
   const [authType, setAuthType] = useState("login");
+
+  const session = useSession();
+
+  console.log(session)
 
   const toggleAuthType = useCallback(() => {
     setAuthType((currentAuthType) =>
@@ -52,6 +55,15 @@ const Auth = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleLogin = (e: any) => {
+    e.preventDefault();
+
+    signIn("credentials", {
+      email,
+      password,
+    });
   };
 
   return (
@@ -102,7 +114,7 @@ const Auth = () => {
               />
             </div>
             <button
-              onClick={handleRegister}
+              onClick={authType === "login" ? handleLogin : handleRegister}
               className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
             >
               {authType === "login" ? "Sign In" : "Sign Up"}
