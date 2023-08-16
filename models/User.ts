@@ -20,7 +20,6 @@ const UserSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
     },
     sessions: [{ type: mongoose.Schema.Types.ObjectId, ref: "Session" }],
     accounts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Account" }],
