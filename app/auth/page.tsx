@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { FcGoogle } from 'react-icons/fc'
+import { FaGithub } from 'react-icons/fa'
 
 import Input from "../../components/Input";
 
@@ -72,6 +74,8 @@ const Auth = () => {
     });
   };
 
+  const iconContainerStyles = "w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition"
+
   if (session.status === "loading") {
     return <p>Loading...</p>;
   }
@@ -129,6 +133,14 @@ const Auth = () => {
             >
               {authType === "login" ? "Sign In" : "Sign Up"}
             </button>
+            <div className="flex items-center gap-4 mt-8 justify-center">
+                <div className={iconContainerStyles}>
+                  <FcGoogle size={30} />
+                </div>
+                <div className={iconContainerStyles}>
+                  <FaGithub size={30} />
+                </div>
+            </div>
             <div className="text-neutral-500 mt-12">
               {authType === "login" ? "New to Jonnyflix?" : "Already a member?"}{" "}
               <span
