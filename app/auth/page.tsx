@@ -27,7 +27,7 @@ const Auth = () => {
 
   useEffect(() => {
     if (session.status === "authenticated") {
-      router?.push("/");
+      router?.push("/profiles");
     }
   }, [session.status, router]);
 
