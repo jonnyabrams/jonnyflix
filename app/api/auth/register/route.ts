@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 
 import dbConnect from "@/utils/mongodb";
-import User from "@/app/models/User";
+import User from "@/models/User";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   const { name, email, password } = await req.json();
