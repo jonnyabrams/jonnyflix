@@ -2,18 +2,12 @@
 
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+
+import useAuthRedirect from "@/hooks/useAuthRedirect";
 
 const Home = () => {
   const session = useSession();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (session.status === "unauthenticated") {
-      router?.push("/auth");
-    }
-  }, [session.status, router]);
+  useAuthRedirect();
 
   if (session.status === "loading") {
     return <p>Loading...</p>;
@@ -21,6 +15,7 @@ const Home = () => {
 
   const handleLogout = (event: any) => {
     event.preventDefault();
+
     signOut();
   };
 
