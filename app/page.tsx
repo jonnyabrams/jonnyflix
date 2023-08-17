@@ -19,7 +19,12 @@ const Home = () => {
     signOut();
   };
 
-  return <button onClick={handleLogout}>Log out</button>;
+  return (
+    <div>
+      <p className="text-white">Logged in as: {session?.data?.user?.name}</p>
+      <button onClick={handleLogout}>Log out</button>
+    </div>
+  );
 };
 
 export default Home;
