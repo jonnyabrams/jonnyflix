@@ -135,7 +135,10 @@ const Auth = () => {
               {authType === "login" ? "Sign In" : "Sign Up"}
             </button>
             <div className="flex items-center gap-4 mt-8 justify-center">
-              <div className={iconContainerStyles}>
+              <div
+                onClick={() => signIn("google", { callbackUrl: "/" })}
+                className={iconContainerStyles}
+              >
                 <FcGoogle size={30} />
               </div>
               <div

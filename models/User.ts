@@ -15,6 +15,12 @@ const UserSchema = new mongoose.Schema(
     image: {
       type: String,
     },
+    googleId: {
+      type: String,
+    },
+    githubId: {
+      type: String,
+    },
     emailVerified: {
       type: Date,
     },
