@@ -4,6 +4,7 @@ import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 
 import useAuthRedirect from "@/hooks/useAuthRedirect";
+import Navbar from "@/components/Navbar";
 
 const Home = () => {
   const session = useSession();
@@ -20,10 +21,9 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <p className="text-white">Logged in as: {session?.data?.user?.name}</p>
-      <button onClick={handleLogout}>Log out</button>
-    </div>
+    <>
+      <Navbar />
+    </>
   );
 };
 
