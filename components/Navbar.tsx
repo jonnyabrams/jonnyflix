@@ -25,7 +25,11 @@ const Navbar = () => {
           className="lg:hidden flex items-center gap-2 ml-8 cursor-pointer relative"
         >
           <p className="text-white text-sm">Browse</p>
-          <BsChevronDown className="text-white transition" />
+          <BsChevronDown
+            className={`text-white transition ${
+              showMobileMenu && "rotate-180"
+            }`}
+          />
           <MobileMenu visible={showMobileMenu} />
         </div>
         <div className="flex ml-auto gap-7 items-center">
@@ -49,8 +53,8 @@ const Navbar = () => {
             </div>
             <BsChevronDown
               className={`text-white transition max-lg:hidden ${
-                showAccountMenu ? "rotate-180" : "rotate-0"
-                }`}
+                showAccountMenu && "rotate-180"
+              }`}
             />
             <AccountMenu visible={showAccountMenu} />
           </div>
