@@ -33,6 +33,17 @@ const Navbar = () => {
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
             <BsBell />
           </div>
+          <div className="flex items-center gap-2 cursor-pointer relative">
+            <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
+              <Image
+                src="/images/profiles-blue.png"
+                width={30}
+                height={30}
+                alt=""
+              />
+            </div>
+            <BsChevronDown className="text-white transition" />
+          </div>
         </div>
       </div>
     </nav>
