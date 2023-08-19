@@ -2,12 +2,14 @@ import Image from "next/image";
 import { BsChevronDown, BsSearch, BsBell } from "react-icons/bs";
 import { useState } from "react";
 
-import NavbarItem from "./NavbarItem";
 import { navLinks } from "@/utils/constants";
+import NavbarItem from "./NavbarItem";
 import MobileMenu from "./MobileMenu";
+import AccountMenu from "./AccountMenu";
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showAccountMenu, setShowAccountMenu] = useState(false);
 
   return (
     <nav className="w-full fixed z-40">
@@ -33,7 +35,10 @@ const Navbar = () => {
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
             <BsBell />
           </div>
-          <div className="flex items-center gap-2 cursor-pointer relative">
+          <div
+            onClick={() => setShowAccountMenu(!showAccountMenu)}
+            className="flex items-center cursor-pointer relative"
+          >
             <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
               <Image
                 src="/images/profiles-blue.png"
@@ -42,7 +47,12 @@ const Navbar = () => {
                 alt=""
               />
             </div>
-            <BsChevronDown className="text-white transition" />
+            <BsChevronDown
+              className={`text-white transition max-lg:hidden ${
+                showAccountMenu ? "rotate-180" : "rotate-0"
+                }`}
+            />
+            <AccountMenu visible={showAccountMenu} />
           </div>
         </div>
       </div>
