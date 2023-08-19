@@ -1,19 +1,42 @@
 import Image from "next/image";
 import { BsChevronDown, BsSearch, BsBell } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { navLinks } from "@/utils/constants";
 import NavbarItem from "./NavbarItem";
 import MobileMenu from "./MobileMenu";
 import AccountMenu from "./AccountMenu";
 
+const TOP_OFFSET = 66;
+
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
+  const [showBackground, setShowBackground] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > TOP_OFFSET) {
+        setShowBackground(true);
+      } else {
+        setShowBackground(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <nav className="w-full fixed z-40">
-      <div className="px-4 md:px-16 py-6 flex items-center transition duration-500 bg-zinc-900 bg-opacity-90">
+      <div
+        className={`px-4 md:px-16 py-6 flex items-center transition duration-500 ${
+          showBackground && "bg-zinc-900 bg-opacity-90"
+        }`}
+      >
         <Image src="/images/logo.png" alt="logo" width={150} height={150} />
         <div className="ml-8 gap-7 hidden lg:flex">
           {navLinks.map((item) => (
