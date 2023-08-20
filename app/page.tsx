@@ -1,10 +1,10 @@
 "use client";
 
-import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 
 import useAuthRedirect from "@/hooks/useAuthRedirect";
 import Navbar from "@/components/Navbar";
+import Billboard from "@/components/Billboard";
 
 const Home = () => {
   const session = useSession();
@@ -14,15 +14,10 @@ const Home = () => {
     return <p>Loading...</p>;
   }
 
-  const handleLogout = (event: any) => {
-    event.preventDefault();
-
-    signOut();
-  };
-
   return (
     <>
       <Navbar />
+      <Billboard />
     </>
   );
 };
