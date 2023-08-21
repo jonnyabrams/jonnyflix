@@ -20,6 +20,7 @@ const Billboard = () => {
           {data?.title}
         </p>
         <p className="text-white text-[12px] md:text-lg mt-3 md:mt-8 w-[90%] md:w-[80%] lg:w-[50%] drop-shadow-xl">{data?.description}</p>
+        <div className="flex items-center mt-3 md:mt-4 gap-3"><button className="bg-white text-white bg-opacity-30 rounded-md py-1 md:py-2 px-2 md:px-4 w-auto text-xs lg:text-lg">More Info</button></div>
       </div>
     </div>
     // <div style="width:100%;height:0px;position:relative;padding-bottom:62.500%;"><iframe src="https://streamable.com/e/4bp51j" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
