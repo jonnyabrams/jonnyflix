@@ -13,12 +13,12 @@ const MovieList = ({ data, title }: MovieListProps) => {
   }
 
   return (
-    <div className="px-4 md:px-12 pt-4 space-y-8">
+    <div className="px-4 overflow-x-auto md:px-12 py-4 space-y-8">
       <div>
         <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
           {title}
         </p>
-        <div className="flex gap-2">
+        <div className="flex gap-2 w-[90%] translate-x-[0%]">
           {data.map((video) => (
             <div key={video.id} className="w-40 flex-shrink-0">
               <MovieCard key={video.id} data={video} />
