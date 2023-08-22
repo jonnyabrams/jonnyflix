@@ -24,6 +24,7 @@ const Home = () => {
       <Billboard />
       <div className="pb-40">
         <MovieList title="Trending Now" data={videos} />
+        <MovieList title="Trending Now" data={videos} />
       </div>
     </>
   );

@@ -11,7 +11,7 @@ const MovieCard = ({ data }: MovieCardProps) => {
       <Image
         src={data.thumbnailUrl}
         fill={true}
-        className="w-[100px] object-cover cursor-pointer transition duration-300 shadow-xl rounded-md group-hover:opacity-70 sm:group-hover:opacity-0 delay-300"
+        className="w-[25%] object-cover cursor-pointer transition duration-300 shadow-xl rounded-md group-hover:opacity-70 sm:group-hover:opacity-0 delay-300"
         alt="thumbnail"
       />
       <div className="opacity-0 absolute z-10 top-0 transition duration-200 invisible sm:visible delay-300 w-full scale-0 group-hover:scale-110 group-hover:-translate-y-[6vw] group-hover:translate-x-[2vw] group-hover:opacity-100">
@@ -32,8 +32,8 @@ const MovieCard = ({ data }: MovieCardProps) => {
             </div>
           </div>
 
-          <p className="text-green-400 text-[12px] font-semibold mt-4">
-            New <span className="text-white">2022</span>
+          <p className="text-white text-[12px] font-semibold mt-4">
+            {data.title}
           </p>
 
           <div className="flex mt-4 gap-2 items-center">

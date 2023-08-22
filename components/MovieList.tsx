@@ -13,7 +13,7 @@ const MovieList = ({ data, title }: MovieListProps) => {
   }
 
   return (
-    <div className="px-4 h-[300px] overflow-x-auto md:px-12 pt-4 space-y-8">
+    <div className="px-4 md:px-12 pt-4 space-y-8">
       <div>
         <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
           {title}
