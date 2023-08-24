@@ -7,6 +7,7 @@ export interface ModalStoreInterface {
   closeModal: () => void;
 }
 
+// start with default values
 const useInfoModal = create<ModalStoreInterface>((set) => ({
   videoId: undefined,
   isOpen: false,

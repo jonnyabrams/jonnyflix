@@ -7,12 +7,15 @@ import Navbar from "@/components/Navbar";
 import Billboard from "@/components/Billboard";
 import MovieList from "@/components/MovieList";
 import useMovieList from "@/hooks/useMovieList";
+import InfoModal from "@/components/InfoModal";
+import useInfoModal from "@/hooks/useInfoModal";
 
 const Home = () => {
   const session = useSession();
   useAuthRedirect();
 
   const { data: videos = [] } = useMovieList();
+  const { isOpen, closeModal } = useInfoModal();
 
   if (session.status === "loading") {
     return <p>Loading...</p>;
@@ -20,6 +23,7 @@ const Home = () => {
 
   return (
     <>
+      <InfoModal visible={isOpen} onClose={closeModal} />
       <Navbar />
       <Billboard />
       <div className="pb-40">
