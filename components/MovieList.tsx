@@ -20,7 +20,7 @@ const MovieList = ({ data, title }: MovieListProps) => {
         </p>
         <div className="flex gap-2 w-[90%] translate-x-[0%]">
           {data.map((video) => (
-            <div key={video.id} className="w-40 flex-shrink-0">
+            <div key={video._id} className="w-40 flex-shrink-0">
               <MovieCard key={video.id} data={video} />
             </div>
           ))}

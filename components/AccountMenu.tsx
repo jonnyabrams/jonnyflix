@@ -1,11 +1,14 @@
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+
+import useCurrentUser from "@/hooks/useCurrentUser";
 
 interface AccountMenuProps {
   visible?: boolean;
 }
 
 const AccountMenu = ({ visible }: AccountMenuProps) => {
+  const session = useSession();
   if (!visible) return null;
 
   const handleLogout = (e: any) => {
@@ -13,6 +16,8 @@ const AccountMenu = ({ visible }: AccountMenuProps) => {
 
     signOut();
   };
+
+  console.log(session);
 
   return (
     <div className="flex flex-col bg-black w-56 absolute top-14 right-0 py-5 border-2 border-gray-800">
@@ -26,7 +31,7 @@ const AccountMenu = ({ visible }: AccountMenuProps) => {
             className="rounded-md"
           />
           <p className="text-white text-sm group-hover/item:underline">
-            Username
+            {session?.data?.user?.name}
           </p>
         </div>
         <hr className="bg-gray-600 border-0 h-px my-4" />
