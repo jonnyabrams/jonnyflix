@@ -2,6 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { FaGithub } from "react-icons/fa";
 
 import useVideo from "@/hooks/useVideo";
 
@@ -23,7 +24,17 @@ const Watch = () => {
           <span className="font-light">Watching: </span>
           {data?.title}
         </p>
-        <p className="text-white text-xs">{data?.description}</p>
+        <div className="flex flex-col gap-4">
+          <p className="text-white text-xs">{data?.description}</p>
+          <a href={data?.link} target="_blank">
+            <div className="flex gap-2">
+              <FaGithub className="text-white" />
+              <p className="text-gray-300 font-semibold text-xs underline">
+                GitHub repo
+              </p>
+            </div>
+          </a>
+        </div>
       </nav>
       <video autoPlay controls className="h-full w-full" src={data?.videoUrl} />
     </div>
