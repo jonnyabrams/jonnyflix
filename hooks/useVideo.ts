@@ -1,9 +1,9 @@
 import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
 
-const useVideo = (id?: string) => {
+const useVideo = (videoId?: string) => {
   const { data, error, isLoading } = useSWR(
-    id ? `/api/videos/${id}` : null,
+    videoId ? `/api/videos/${videoId}` : null,
     fetcher,
     {
       revalidateIfStale: false,

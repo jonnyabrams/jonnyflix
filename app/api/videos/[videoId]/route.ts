@@ -5,14 +5,14 @@ import Video from "@/models/Video";
 
 export const GET = async (
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { videoId: string } }
 ) => {
-  const { id } = params;
+  const { videoId } = params;
 
   try {
     await connect();
 
-    const post = await Video.findById(id);
+    const post = await Video.findById(videoId);
 
     return new NextResponse(JSON.stringify(post), { status: 200 });
   } catch (error) {
