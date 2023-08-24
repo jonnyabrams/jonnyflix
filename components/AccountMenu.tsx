@@ -1,8 +1,6 @@
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
-import useCurrentUser from "@/hooks/useCurrentUser";
-
 interface AccountMenuProps {
   visible?: boolean;
 }
