@@ -1,5 +1,3 @@
 # Jonnyflix
 
-For own ref: `npx prisma db push`
-
-1:15
+[https://jonnyflix.vercel.app/](https://jonnyflix.vercel.app/)
